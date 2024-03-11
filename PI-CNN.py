@@ -1,101 +1,92 @@
-{
- "cells": [
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "fa4f1085-be23-4809-9538-d2479ec66e8e",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "import numpy as np\n",
-    "import pandas as pd\n",
-    "from sklearn.model_selection import StratifiedKFold\n",
-    "from tensorflow.keras.layers import Dense, GlobalAveragePooling2D\n",
-    "from tensorflow.keras.models import Model\n",
-    "from tensorflow.keras.layers import Input\n",
-    "from tensorflow.keras.applications import DenseNet121\n",
-    "from tensorflow.keras.optimizers import Adam\n",
-    "from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score\n",
-    "\n",
-    "\n",
-    "epochs_list =  [15]\n",
-    "n_splits = 10\n",
-    "skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=0)\n",
-    "\n",
-    "results_list = []\n",
-    "for num_epochs in epochs_list:\n",
-    "    accuracy_list = []\n",
-    "    precision_list = []\n",
-    "    recall_list = []\n",
-    "    auc_list = []\n",
-    "\n",
-    "    for fold, (train_index, test_index) in enumerate(skf.split(data_array_images, y_combined.argmax(axis=1))):\n",
-    "        X_train_images, X_test_images = data_array_images[train_index], data_array_images[test_index]\n",
-    "        y_train, y_test = y_combined[train_index], y_combined[test_index]\n",
-    "\n",
-    "        base_model =  DenseNet121(weights='imagenet', include_top=False, input_shape=(224, 224, 3))\n",
-    "\n",
-    "        for layer in base_model.layers:\n",
-    "            layer.trainable = False\n",
-    "\n",
-    "        x = GlobalAveragePooling2D()(base_model.output)\n",
-    "        x = Dense(128, activation='relu')(x)\n",
-    "        output = Dense(n_classes, activation='sigmoid')(x)  \n",
-    "\n",
-    " \n",
-    "        model = Model(inputs=base_model.input, outputs=output)\n",
-    "        model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy', 'Precision', 'Recall', 'AUC'])\n",
-    "        print(f\"Training Fold {fold + 1}/{n_splits} with {num_epochs} epochs...\")\n",
-    "        model.fit(x=[X_train_images], y=y_train, validation_data=([X_test_images], y_test),\n",
-    "                  epochs=num_epochs, batch_size=64)\n",
-    "        y_pred = model.predict([X_test_images])\n",
-    "        accuracy = accuracy_score(y_test, (y_pred > 0.5).astype(int))\n",
-    "        precision = precision_score(y_test, (y_pred > 0.5).astype(int), average='micro')\n",
-    "        recall = recall_score(y_test, (y_pred > 0.5).astype(int), average='micro')\n",
-    "        auc = roc_auc_score(y_test, y_pred, average='micro')\n",
-    "        accuracy_list.append(accuracy)\n",
-    "        precision_list.append(precision)\n",
-    "        recall_list.append(recall)\n",
-    "        auc_list.append(auc)\n",
-    "\n",
-    "    average_accuracy = np.mean(accuracy_list)\n",
-    "    average_precision = np.mean(precision_list)\n",
-    "    average_recall = np.mean(recall_list)\n",
-    "    average_auc = np.mean(auc_list)\n",
-    "\n",
-    " \n",
-    "    results_list.append({\n",
-    "        'Epochs': num_epochs,\n",
-    "        'Average Accuracy': average_accuracy,\n",
-    "        'Average Precision': average_precision,\n",
-    "        'Average Recall': average_recall,\n",
-    "        'Average AUC': average_auc\n",
-    "    })\n",
-    "\n",
-    "results_df = pd.DataFrame(results_list)\n",
-    "print(results_df)"
-   ]
-  }
- ],
- "metadata": {
-  "kernelspec": {
-   "display_name": "Python 3 (ipykernel)",
-   "language": "python",
-   "name": "python3"
-  },
-  "language_info": {
-   "codemirror_mode": {
-    "name": "ipython",
-    "version": 3
-   },
-   "file_extension": ".py",
-   "mimetype": "text/x-python",
-   "name": "python",
-   "nbconvert_exporter": "python",
-   "pygments_lexer": "ipython3",
-   "version": "3.9.18"
-  }
- },
- "nbformat": 4,
- "nbformat_minor": 5
-}
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import StratifiedKFold
+from tensorflow.keras.layers import concatenate, Dense, Dropout, Conv2D, MaxPooling2D, Flatten, Input
+from tensorflow.keras.models import Model, Sequential
+from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
+from sklearn.preprocessing import LabelBinarizer
+
+
+
+start_time = time.time()
+tda_input_shape = (100, 50, 1)
+image_input_shape = (224, 224, 3)
+n_classes = 2
+
+
+def create_CNN(input_shape, num_classes, regress=False):
+    model = Sequential()
+    model.add(Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))
+    model.add(MaxPooling2D((2, 2)))
+    model.add(Flatten())
+    model.add(Dense(128, activation='relu'))
+    return model
+
+n_splits = 10
+skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=0)
+
+epochs_list = [15]  
+results_list = []  
+
+for num_epochs in epochs_list:
+    accuracy_list = []  
+    precision_list = [] 
+    recall_list = [] 
+    auc_list = [] 
+
+    for fold, (train_index, test_index) in enumerate(skf.split(X_tda_np, y_combined.argmax(axis=1))):
+        X_train_tda, X_test_tda = X_tda_np[train_index], X_tda_np[test_index]
+        X_train_images, X_test_images = data_array_images[train_index], data_array_images[test_index]
+        y_train, y_test = y_combined[train_index], y_combined[test_index]
+
+        cnn = create_CNN(tda_input_shape, n_classes, regress=False)
+
+        model_cnn = Sequential([
+          EfficientNetB0(weights='imagenet', include_top=False, input_shape=image_input_shape),
+        ])
+
+        for layer in model_cnn.layers:
+            layer.trainable = False
+
+        model_cnn.add(Conv2D(64, (3, 3), activation='relu'))
+        model_cnn.add(MaxPooling2D(2, 2))
+        model_cnn.add(Flatten())
+        model_cnn.add(Dense(64, activation='relu'))
+
+        combinedInput = concatenate([cnn.output, model_cnn.output])
+        x = Dense(256, activation="relu")(combinedInput)
+        x = Dense(128, activation='relu')(x)
+        x = Dense(128, activation='relu')(x)
+        x = Dropout(0.2)(x)
+        x = Dense(n_classes, activation='sigmoid')(x)  # Use softmax for multi-class classification
+
+        model = Model(inputs=[cnn.input, model_cnn.input], outputs=x)
+        model.compile(loss='binary_crossentropy', optimizer='Adam', metrics=['accuracy', 'Precision', 'Recall', 'AUC'])
+
+     
+        print(f"Training Fold {fold + 1}/{n_splits} with {num_epochs} epochs...")
+        model.fit(x=[X_train_tda, X_train_images], y=y_train,
+                  validation_data=([X_test_tda, X_test_images], y_test),
+                  epochs=num_epochs, batch_size=64)
+
+        y_pred = model.predict([X_test_tda, X_test_images])
+        accuracy = accuracy_score(np.argmax(y_test, axis=1), np.argmax(y_pred, axis=1))
+        precision = precision_score(np.argmax(y_test, axis=1), np.argmax(y_pred, axis=1), average='micro')
+        recall = recall_score(np.argmax(y_test, axis=1), np.argmax(y_pred, axis=1), average='micro')
+        auc = roc_auc_score(y_test, y_pred, average='weighted')
+
+        accuracy_list.append(accuracy)
+        precision_list.append(precision)
+        recall_list.append(recall)
+        auc_list.append(auc)
+
+    avg_metrics = {
+        'Epochs': num_epochs,
+        'Average Accuracy': np.mean(accuracy_list),
+        'Average Precision': np.mean(precision_list),
+        'Average Recall': np.mean(recall_list),
+        'Average AUC': np.mean(auc_list),
+    }
+    results_list.append(avg_metrics)
+results_df = pd.DataFrame(results_list)
+print(results_df)
