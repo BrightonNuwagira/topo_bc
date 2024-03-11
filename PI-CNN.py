@@ -8,7 +8,7 @@ from sklearn.preprocessing import LabelBinarizer
 
 
 
-start_time = time.time()
+
 tda_input_shape = (100, 50, 1)
 image_input_shape = (224, 224, 3)
 n_classes = 2
