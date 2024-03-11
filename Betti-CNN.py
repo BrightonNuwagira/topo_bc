@@ -16,7 +16,6 @@ def create_MLP(dim, regress=False):
 n_splits = 10
 skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=0)
 
-# Define the epochs to be tested
 epochs_list =  [15]
 
 results_list = [] 
@@ -53,7 +52,7 @@ for num_epochs in epochs_list:
         model = Model(inputs=[mlp.input, model_cnn.input], outputs=x)
         model.compile(loss='binary_crossentropy', optimizer='Adam', metrics=['accuracy', 'Precision', 'Recall', 'AUC'])
 
-        # Train the model
+     
         print(f"Training Fold {fold + 1}/{n_splits} with {num_epochs} epochs...")
         model.fit(x=[X_train_tda, X_train_images], y=y_train,
                   validation_data=([X_test_tda, X_test_images], y_test),
@@ -65,7 +64,7 @@ for num_epochs in epochs_list:
         recall = recall_score(y_test, (y_pred > 0.5).astype(int), average='micro')
         auc = roc_auc_score(y_test, y_pred, average='micro')
 
-        # Append metrics to lists
+      
         accuracy_list.append(accuracy)
         precision_list.append(precision)
         recall_list.append(recall)
