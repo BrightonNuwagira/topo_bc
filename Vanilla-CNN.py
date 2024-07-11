@@ -36,7 +36,7 @@ for num_epochs in epochs_list:
         model = Model(inputs=base_model.input, outputs=output)
         model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy', 'Precision', 'Recall', 'AUC'])
         print(f"Training Fold {fold + 1}/{n_splits} with {num_epochs} epochs...")
-        model.fit(x=[X_train_images], y=y_train, validation_data=([X_test_images], y_test),
+        model.fit(x=[X_train_images], y=y_train,
                   epochs=num_epochs, batch_size=64)
 
         y_pred = model.predict([X_test_images])
