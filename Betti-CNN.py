@@ -59,8 +59,7 @@ for num_epochs in epochs_list:
 
       
         print(f"Training Fold {fold + 1}/{n_splits} with {num_epochs} epochs...")
-        model.fit(x=[X_train_tda, X_train_images], y=y_train,
-                  validation_data=([X_test_tda, X_test_images], y_test),
+        model.fit(x=[X_train_tda, X_train_images], y=y_train, y_test),
                   epochs=num_epochs, batch_size=64)
 
         y_pred = model.predict([X_test_tda, X_test_images])
