@@ -1,11 +1,30 @@
 # Topology Meets Deep Learning for Breast Cancer Detection (topo_bc)
 
-This repository implements **Topological Data Analysis (TDA)** methods integrated with **Deep Learning (DL)** models for breast cancer detection, as described in our paper Topology Meets Deep Learning for Breast Cancer Detection.
+# Topological Data Analysis for Breast Cancer Detection (topo_bc)
+
+This repository implements **Topological Data Analysis (TDA)** integrated with **Deep Learning (DL)** methods for breast cancer detection, as detailed in our paper Topology Meets Deep Learning for Breast Cancer Detection.
+
+---
+
+## Table of Contents
+1. [Features](#features)
+2. [Installation](#installation)
+3. [Usage](#usage)
+    - [1. Data Preparation](#1-data-preparation)
+    - [2. Extract Topological Features](#2-extract-topological-features)
+    - [3. Train a Model](#3-train-a-model)
+4. [Results](#results)
+5. [Repository Structure](#repository-structure)
+6. [Contributing](#contributing)
+7. [License](#license)
+
+---
 
 ## Features
-- Topological feature extraction using persistent homology.
-- Integration with CNNs and Vision Transformers (VTs).
-- Applications to multiple breast ultrasound datasets.
+- Extraction of topological features such as Betti curves and persistence diagrams.
+- Integration with state-of-the-art models (CNNs, Vision Transformers).
+- Applied to multiple breast cancer datasets (BUSI, BUS-BRA, etc.).
+- Reproducible experiment scripts and visualization notebooks.
 
 ---
 
@@ -13,11 +32,10 @@ This repository implements **Topological Data Analysis (TDA)** methods integrate
 
 ### Prerequisites
 - Python 3.9 or later
-- [Giotto-TDA](https://giotto-ai.github.io/gtda-docs/0.5.1/library.html)
+- [Giotto-TDA](https://giotto.ai/)
 
 Install dependencies:
 ```bash
 git clone https://github.com/BrightonNuwagira/topo_bc.git
 cd topo_bc
 pip install -r requirements.txt
-
