@@ -4,11 +4,12 @@
 
 This repository provides a comprehensive pipeline for breast cancer detection using topological data analysis (TDA) integrated with machine learning models. Below are the key features:
 
-## Installation
 
-### Prerequisites
-- Python 3.9 or later
+1. ** Installation**
+- Python 3.9 
 - [Giotto-TDA]([https://giotto.ai/](https://giotto-ai.github.io/gtda-docs/0.5.1/library.html))
+
+2. ** Data **
 
 
 1. **Topological Feature Extraction**
