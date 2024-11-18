@@ -1,4 +1,4 @@
-# Topological Data Analysis for Breast Cancer Detection (topo_bc)
+# Topology Meets Deep Learning for Breast Cancer Detection (topo_bc)
 
 This repository implements **Topological Data Analysis (TDA)** methods integrated with **Deep Learning (DL)** models for breast cancer detection, as described in our paper Topology Meets Deep Learning for Breast Cancer Detection.
 
