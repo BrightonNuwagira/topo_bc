@@ -1,40 +1,76 @@
 # Topology Meets Deep Learning for Breast Cancer Detection (topo_bc)
 
-# Topological Data Analysis for Breast Cancer Detection (topo_bc)
+## Features
 
-This repository implements **Topological Data Analysis (TDA)** integrated with **Deep Learning (DL)** methods for breast cancer detection, as detailed in our paper Topology Meets Deep Learning for Breast Cancer Detection.
+This repository provides a comprehensive pipeline for breast cancer detection using topological data analysis (TDA) integrated with machine learning models. Below are the key features:
 
-- Extraction of topological features such as Betti curves and persistence diagrams.
-- Integration with state-of-the-art models (CNNs, Vision Transformers).
-- Applied to multiple breast cancer datasets (BUSI, BUS-BRA, Mendeley).
-- Reproducible experiment scripts and visualization notebooks.
+1. **Topological Feature Extraction**
+   - **Betti Vectors**:
+     - Extract Betti numbers using `Betti_vectors.py`.
+     - Betti numbers describe the number of connected components, holes, and voids in the data.
+     ```bash
+     python Betti_vectors.py --input_path ./data --output_path ./results/betti_vectors.csv
+     ```
+   - **Persistence Images**:
+     - Compute persistence images from persistence diagrams using `Persistance_Image.py`.
+     - Persistence images encode topological summaries into a vector format suitable for machine learning.
+     ```bash
+     python Persistance_Image.py --input_path ./data --output_path ./results/persistence_images.npy
+     ```
+
+2. **Model Architectures**
+   - **Betti-CNN**:
+     - Implements a Convolutional Neural Network (CNN) enhanced with Betti vectors for feature augmentation.
+     - File: `Betti-CNN.py`.
+     ```bash
+     python Betti-CNN.py --betti_vectors ./results/betti_vectors.csv --labels ./data/labels.csv
+     ```
+   - **PI-CNN**:
+     - CNN trained using persistence images as input features.
+     - File: `PI-CNN.py`.
+     ```bash
+     python PI-CNN.py --persistence_images ./results/persistence_images.npy --labels ./data/labels.csv
+     ```
+   - **Vanilla CNN**:
+     - Baseline CNN implementation without topological features, allowing comparison with Betti-CNN and PI-CNN.
+     - File: `Vanilla-CNN.py`.
+     ```bash
+     python Vanilla-CNN.py --input_images ./data/images --labels ./data/labels.csv
+     ```
+
+3. **Comparison of Topological Approaches**
+   - The repository enables a direct comparison between:
+     - CNNs using Betti numbers (`Betti-CNN.py`).
+     - CNNs using persistence images (`PI-CNN.py`).
+     - Standard CNNs (`Vanilla-CNN.py`).
+
+4. **Reproducibility**
+   - Scripts are included for training models, evaluating performance, and visualizing results.
+   - All necessary files to reproduce results from the paper are included or can be generated.
 
 ---
 
-## Table of Contents
+### **Details for Each File**
 
-2. [Installation](#installation)
-3. [Usage](#usage)
-    - [1. Data Preparation](#1-data-preparation)
-    - [2. Extract Topological Features](#2-extract-topological-features)
-    - [3. Train a Model](#3-train-a-model)
-4. [Results](#results)
-5. [Repository Structure](#repository-structure)
-6. [Contributing](#contributing)
-7. [License](#license)
+Here’s how the files contribute to the project:
+
+1. **`Betti_vectors.py`**:
+   - Computes Betti numbers for the input data.
+   - Accepts raw images or other forms of data as input.
+   - Outputs a CSV file containing the computed Betti numbers.
+
+2. **`Persistance_Image.py`**:
+   - Converts persistence diagrams into persistence images.
+   - Provides a vectorized representation of topological features.
+
+3. **`Betti-CNN.py`**:
+   - CNN implementation that combines image features with Betti vectors.
+
+4. **`PI-CNN.py`**:
+   - CNN implementation using persistence images as input.
+
+5. **`Vanilla-CNN.py`**:
+   - Baseline CNN for comparison, trained directly on the raw input images.
 
 ---
 
-
-
-## Installation
-
-### Prerequisites
-- Python 3.9 or later
-- [Giotto-TDA](https://giotto.ai/)
-
-Install dependencies:
-```bash
-git clone https://github.com/BrightonNuwagira/topo_bc.git
-cd topo_bc
-pip install -r requirements.txt
