@@ -9,13 +9,15 @@ This repository provides a comprehensive pipeline for breast cancer detection us
 - Python 3.9 
 - [Giotto-TDA]([https://giotto.ai/](https://giotto-ai.github.io/gtda-docs/0.5.1/library.html))
 
-2. **Data**
-   
-   This repository supports multiple datasets for breast cancer classification, such as:
-   - BUSI Dataset: Breast ultrasound images (benign, malignant, normal).
-   - BUS-BRA Dataset: Additional breast ultrasound dataset.
-   - MENDELEY Dataset: A collection of labeled ultrasound images.
+### 2. **Data**
 
+This repository supports multiple datasets for breast cancer classification, which can be accessed and downloaded from the following link: [Breast Cancer Datasets](https://drive.google.com/drive/folders/19Xs8DrF9OBCWupTr1mTlCzC0mHICsffC?usp=sharing).
+
+The datasets include:
+
+- **BUSI Dataset**: Breast ultrasound images categorized into `benign`, `malignant`, and `normal`.
+- **BUS-BRA Dataset**: An additional breast ultrasound dataset with similar classes.
+- **MENDELEY Dataset**: A collection of labeled ultrasound images for breast cancer detection.
 
 1. **Topological Feature Extraction**
    - **Betti Vectors**:
