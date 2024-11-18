@@ -4,10 +4,15 @@
 
 This repository implements **Topological Data Analysis (TDA)** integrated with **Deep Learning (DL)** methods for breast cancer detection, as detailed in our paper Topology Meets Deep Learning for Breast Cancer Detection.
 
+- Extraction of topological features such as Betti curves and persistence diagrams.
+- Integration with state-of-the-art models (CNNs, Vision Transformers).
+- Applied to multiple breast cancer datasets (BUSI, BUS-BRA, Mendeley).
+- Reproducible experiment scripts and visualization notebooks.
+
 ---
 
 ## Table of Contents
-1. [Features](#features)
+
 2. [Installation](#installation)
 3. [Usage](#usage)
     - [1. Data Preparation](#1-data-preparation)
@@ -20,13 +25,7 @@ This repository implements **Topological Data Analysis (TDA)** integrated with *
 
 ---
 
-## Features
-- Extraction of topological features such as Betti curves and persistence diagrams.
-- Integration with state-of-the-art models (CNNs, Vision Transformers).
-- Applied to multiple breast cancer datasets (BUSI, BUS-BRA, etc.).
-- Reproducible experiment scripts and visualization notebooks.
 
----
 
 ## Installation
 
