@@ -65,6 +65,63 @@ The datasets include:
 
 ---
 
+### **Additional Implementations**
+
+This repository also includes advanced implementations leveraging topological features in state-of-the-art architectures, such as Swin Transformers.
+
+#### 1. **Topological Swin Transformer (`toposwin.py`)**
+   - A novel architecture integrating Betti vectors with the Swin Transformer.
+   - Implements cross-attention mechanisms to combine image features with topological descriptors, enhancing performance for breast cancer detection.
+   - **Key Features**:
+     - Uses Betti numbers for feature augmentation through `BettiEncoder`.
+     - Incorporates hierarchical feature extraction via Swin Transformer.
+     - File Path: `toposwin.py`.
+   - **Usage**:
+     ```bash
+     python toposwin.py --input_images ./data/images --betti0 ./data/betti0.csv --betti1 ./data/betti1.csv --labels ./data/labels.csv
+     ```
+
+#### 2. **Swin Transformer Baseline (`swin.py`)**
+   - A baseline implementation of the Swin Transformer model for comparison with topological integrations.
+   - Supports standard breast cancer detection tasks.
+   - File Path: `swin.py`.
+   - **Usage**:
+     ```bash
+     python swin.py --input_images ./data/images --labels ./data/labels.csv
+     ```
+
+#### 3. **Betti Encoder (`betti_encoder.py`)**
+   - A standalone module to encode Betti curves into high-dimensional representations using transformer-based encoding.
+   - **Features**:
+     - Layer normalization and positional embeddings.
+     - Configurable transformer encoder architecture.
+   - **Integrations**:
+     - Used in `toposwin.py` to process Betti curves.
+     - Includes a `BettiClassifier` for standalone classification tasks using Betti numbers.
+   - File Path: `betti_encoder.py`.
+   - **Usage**:
+     ```python
+     from betti_encoder import BettiEncoder, BettiClassifier
+     encoder = BettiEncoder(seq_length=100, d_model=512, nhead=4)
+     ```
+
+---
+
+### **Comparison of Models**
+
+| Model               | Topological Features | Architecture          | Application                              |
+|---------------------|-----------------------|-----------------------|------------------------------------------|
+| **Vanilla CNN**     | No                   | CNN                   | Baseline for breast cancer detection.   |
+| **Betti-CNN**       | Yes (Betti Vectors)  | CNN + Feature Augmentation | Topology-enhanced CNN.                 |
+| **PI-CNN**          | Yes (Persistence Images) | CNN                 | Utilizes persistence image features.    |
+| **Swin Transformer**| No                   | Swin Transformer      | State-of-the-art image classification.  |
+| **TopoSwin**        | Yes (Betti Vectors)  | Swin + Cross Attention | Combines topology with hierarchical learning. |
+
+
+
+
+
+
 ### **Details for Each File**
 
 Here’s how the files contribute to the project:
