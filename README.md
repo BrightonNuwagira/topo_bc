@@ -109,7 +109,7 @@ Used within `toposwin.py` to learn representations of topological features via a
 
 | Model           | Topological Input | Architecture       | Best Use Case                   |
 |-----------------|-------------------|--------------------|----------------------------------|
-| Vanilla CNN     | ❌                | DenseNet121        | Baseline Comparison              |
+| Vanilla CNN     | ❌                | CNN Backbone (CNN)  | Baseline Comparison              |
 | Betti-CNN       | ✅ Betti Curves   | CNN + Betti        | Topology-aware CNN               |
 | PI-CNN          | ✅ Persistence Img| CNN + PI           | Persistence-enhanced CNN         |
 | Swin Transformer| ❌                | Vision Transformer | SOTA backbone                    |
