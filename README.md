@@ -53,7 +53,7 @@ We evaluate on several public breast ultrasound datasets, including:
 
 ---
 
-## 🧠 Models and Usage
+##  Models and Usage
 
 ### 1. Vanilla CNN
 ```bash
@@ -82,7 +82,7 @@ python toposwin.py --input_images ./data/images --betti0 ./data/betti0.csv --bet
 
 ---
 
-## 🔍 Topological Feature Extraction
+##  Topological Feature Extraction
 
 ### Betti Vectors (Betti0 & Betti1)
 Extracted using the **giotto-tda** library or custom scripts. See sample in `3D_Betticurves/`.
@@ -105,7 +105,7 @@ Used within `toposwin.py` to learn representations of topological features via a
 
 ---
 
-## 📊 Performance Summary
+## Performance Summary
 
 | Model           | Topological Input | Architecture       | Best Use Case                   |
 |-----------------|-------------------|--------------------|----------------------------------|
