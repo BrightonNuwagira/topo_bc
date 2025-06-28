@@ -1,6 +1,6 @@
 # Breast Cancer Detection with Topological Deep Learning
 
-This repository accompanies our ICCV 2025 paper, **"Breast Cancer Detection with Topological Deep Learning"**, which introduces a novel integration of topological data analysis (TDA) with convolutional and transformer-based deep learning architectures for improved breast cancer classification.
+This repository accompanies our  paper, **"Breast Cancer Detection with Topological Deep Learning"**, which introduces a novel integration of topological data analysis (TDA) with convolutional and transformer-based deep learning architectures for improved breast cancer classification.
 
 Our approach extracts topological descriptors—**Betti curves** and **persistence images**—and fuses them with image features using architectures including CNNs and Swin Transformers. This repository contains code for TDA feature extraction, deep learning model training, and reproducibility of our published results.
 
@@ -14,7 +14,7 @@ Our approach extracts topological descriptors—**Betti curves** and **persisten
 
 ---
 
-## 📁 Repository Structure and Correspondence to Paper
+## Repository Structure and Correspondence to Paper
 
 | File Name               | Description                                                                 | Model Name in Paper                |
 |------------------------|-----------------------------------------------------------------------------|------------------------------------|
@@ -30,7 +30,7 @@ Our approach extracts topological descriptors—**Betti curves** and **persisten
 
 ---
 
-## 🧪 Installation
+##  Installation
 
 ```bash
 git clone https://github.com/<your-username>/topo-breast-cancer.git
@@ -43,18 +43,13 @@ pip install -r requirements.txt
 
 ---
 
-## 🗂️ Datasets
+##  Datasets
 
 We evaluate on several public breast ultrasound datasets, including:
 
 - **BUSI Dataset**
 - **BUS-BRA Dataset**
 - **MENDELEY Dataset**
-
-Data should be structured in folders or CSV format containing:
-- Raw images
-- Labels
-- Precomputed Betti0 and Betti1 curves (if applicable)
 
 ---
 
@@ -99,7 +94,7 @@ python Persistance_Image.py --input_path ./data --output_path ./results/persiste
 
 ---
 
-## 🔧 Betti Encoder
+##  Betti Encoder
 
 ```python
 from betti_encoder import BettiEncoder
