@@ -6,7 +6,7 @@ Our approach extracts topological descriptors—**Betti curves** and **persisten
 
 ---
 
-## 🚀 Highlights
+## Highlights
 - **Betti-CNN** and **PI-CNN**: CNN architectures augmented with Betti curves and persistence images.
 - **TopoSwin**: A novel architecture combining Swin Transformer features with Betti encodings via cross-attention.
 - **Transformer-based Betti Encoder** for end-to-end topological representation learning.
@@ -14,20 +14,19 @@ Our approach extracts topological descriptors—**Betti curves** and **persisten
 
 ---
 
-## 📁 Repository Structure
+## 📁 Repository Structure and Correspondence to Paper
 
-```
-.
-├── Betti-CNN.py            # CNN using Betti vectors
-├── PI-CNN.py               # CNN using persistence images
-├── Vanilla-CNN.py          # Standard DenseNet-based CNN
-├── toposwin.py             # Topological Swin Transformer
-├── swin.py                 # Baseline Swin Transformer
-├── betti_encoder.py        # Transformer encoder for Betti curves
-├── Persistance_Image.py    # Compute persistence images
-├── 3D_Betticurves/         # Contains sample Betti curve files
-└── TDA___CNN_Breast_Cancer.pdf # ICCV 2025 paper
-```
+| File Name               | Description                                                                 | Model Name in Paper                |
+|------------------------|-----------------------------------------------------------------------------|------------------------------------|
+| `Betti-CNN.py`         | CNN model augmented with Betti curves                                       | **Betti-CNN**                      |
+| `PI-CNN.py`            | CNN model using persistence images as input                                | **PI-CNN**                         |
+| `Vanilla-CNN.py`       | Standard CNN backbone (e.g., DenseNet121, ResNet18, VGG16)                  | **Baseline CNN**                   |
+| `toposwin.py`          | Swin Transformer with cross-attention fusion of image and Betti features    | **TopoSwin**                       |
+| `swin.py`              | Standard Swin Transformer model without topological integration             | **Swin (Baseline Transformer)**    |
+| `betti_encoder.py`     | Transformer encoder for Betti curves, used within TopoSwin and ablation     | **Betti Encoder / Betti-Transformer** |
+| `Persistence_Image.py` | Script to compute persistence images from topological diagrams              |  |
+| `3D_Betticurves/`      | Folder containing precomputed Betti0 and Betti1 vectors                     |  |
+
 
 ---
 
