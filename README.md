@@ -1,4 +1,4 @@
-# Topology Meets Deep Learning for Breast Cancer Detection (topo_bc)
+# Breast Cancer Detection with Topological Deep Learning 
 
 
 
