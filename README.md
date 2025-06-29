@@ -8,7 +8,7 @@ Our approach extracts topological descriptors—**Betti curves** and **persisten
 
 ## Highlights
 - **Betti-CNN** and **PI-CNN**: CNN architectures augmented with Betti curves and persistence images.
-- **TopoSwin**: A novel architecture combining Swin Transformer features with Betti encodings via cross-attention.
+- **Topo-VT**: A novel architecture combining Swin Transformer features with Betti encodings via cross-attention.
 - **Transformer-based Betti Encoder** for end-to-end topological representation learning.
 - Benchmarked on real breast ultrasound datasets with superior performance over vanilla CNNs and standard transformers.
 
@@ -21,7 +21,7 @@ Our approach extracts topological descriptors—**Betti curves** and **persisten
 | `Betti-CNN.py`         | CNN model augmented with Betti curves                                       | **Betti-CNN**                      |
 | `PI-CNN.py`            | CNN model using persistence images as input                                | **PI-CNN**                         |
 | `Vanilla-CNN.py`       | Standard CNN backbone (e.g., DenseNet121, ResNet18, VGG16)                  | **Baseline CNN**                   |
-| `toposwin.py`          | Swin Transformer with cross-attention fusion of image and Betti features    | **TopoSwin**                       |
+| `toposwin.py`          | Swin Transformer with cross-attention fusion of image and Betti features    | **Topo-VT**                       |
 | `swin.py`              | Standard Swin Transformer model without topological integration             | **Swin (Baseline Transformer)**    |
 | `betti_encoder.py`     | Transformer encoder for Betti curves, used within TopoSwin and ablation     | **Betti Encoder / Betti-Transformer** |
 | `Persistence_Image.py` | Script to compute persistence images from topological diagrams              |  |
@@ -33,10 +33,11 @@ Our approach extracts topological descriptors—**Betti curves** and **persisten
 ##  Installation
 
 ```bash
-git clone https://github.com/<your-username>/topo-breast-cancer.git
-cd topo-breast-cancer
+git clone https://github.com/<username>/topo_vit_bc.git
+cd topo_vit_bc
 pip install -r requirements.txt
-```
+
+``
 
 - Requires Python ≥ 3.9
 - Dependencies: `torch`, `timm`, `scikit-learn`, `keras`, `giotto-tda`, `numpy`, `pandas`
