@@ -37,6 +37,8 @@ git clone https://github.com/<username>/topo_vit_bc.git
 cd topo_vit_bc
 pip install -r requirements.txt
 
+```
+
 ``
 
 - Requires Python ≥ 3.9
