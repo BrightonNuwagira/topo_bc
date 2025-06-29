@@ -39,7 +39,7 @@ pip install -r requirements.txt
 
 ```
 
-``
+
 
 - Requires Python ≥ 3.9
 - Dependencies: `torch`, `timm`, `scikit-learn`, `keras`, `giotto-tda`, `numpy`, `pandas`
